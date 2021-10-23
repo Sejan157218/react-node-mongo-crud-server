@@ -11,12 +11,11 @@ const port = 9000;
 app.use(cors());
 app.use(express.json());
 
-// mymongo1 
-// 5ZaGdWmhoivqS5G2
 
 
 
-const uri = "mongodb+srv://mymongo1:5ZaGdWmhoivqS5G2@cluster0.iw7ld.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
+const uri = "mongodb+srv://mymongo1:<password>@cluster0.iw7ld.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 async function run() {
     try {

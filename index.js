@@ -11,7 +11,7 @@ const port = 9000;
 app.use(cors());
 app.use(express.json());
 
-// mymongo1
+// mymongo1 
 // 5ZaGdWmhoivqS5G2
 
 
@@ -55,6 +55,24 @@ async function run() {
             const newUser = req.body;
             const result = await users.insertOne(newUser)
             console.log(`added`, result);
+            res.json(result)
+        })
+
+        // update post
+        app.put('/users/:id', async(req,res)=>{
+            const id = req.params.id;
+            const filter = {_id:ObjectId(id)}
+            const updateUser = req.body;
+            const options = { upsert: true };
+            const updateDoc = {
+                $set: {
+                 
+                      name : updateUser.name,
+                      email : updateUser.email
+                
+                },
+              };
+              const result = await users.updateOne(filter, updateDoc, options);
             res.json(result)
         })
 
